@@ -1,0 +1,28 @@
+{
+  "blogs": [
+    {
+      "id": 2,
+      "title": "fg",
+      "text": "fgh",
+      "date": "2020-07-26T12:21:32.383Z",
+      "author": "fgh",
+      "img": "../../assets/pizza.jpg"
+    },
+    {
+      "id": 3,
+      "title": "fgh",
+      "text": "fgh",
+      "date": "2020-07-26T12:27:13.038Z",
+      "author": "fgh",
+      "img": "../../assets/pizza.jpg"
+    },
+    {
+      "id": 6,
+      "title": "post",
+      "text": "text",
+      "date": "2020-07-27T09:05:29.130Z",
+      "author": "author",
+      "img": "../../assets/pizza.jpg"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+<div class="row m-4">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" aria-orientation="vertical">
+      <a class="nav-link" routerLink="product" routerLinkActive="btn-dark" data-toggle="pill">Product</a>
+      <a class="nav-link" routerLink="category" routerLinkActive="btn-dark" data-toggle="pill">Category</a>
+      <a class="nav-link" routerLink="blog" routerLinkActive="btn-dark" data-toggle="pill">Blog</a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

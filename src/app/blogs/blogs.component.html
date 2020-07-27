@@ -1,0 +1,9 @@
+<section class="d-flex flex-wrap">
+    <article *ngFor="let blog of blogList" class="m-2">
+        <img src="{{blog.img}}" alt="pizza">
+        <p class="text-primary blog-author">{{blog.date | date: 'MMM d, y' | uppercase}} {{blog.author | uppercase}}</p>
+        <h3>{{blog.title}}</h3>
+        <p>{{blog.text}}</p>
+    </article>
+</section>
+
