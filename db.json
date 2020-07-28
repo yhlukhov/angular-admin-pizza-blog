@@ -1,19 +1,11 @@
 {
   "blogs": [
     {
-      "id": 2,
-      "title": "fg",
-      "text": "fgh",
-      "date": "2020-07-26T12:21:32.383Z",
-      "author": "fgh",
-      "img": "../../assets/pizza.jpg"
-    },
-    {
       "id": 3,
-      "title": "fgh",
-      "text": "fgh",
-      "date": "2020-07-26T12:27:13.038Z",
-      "author": "fgh",
+      "title": "fgh222",
+      "text": "fgh222",
+      "date": "2020-07-28T08:46:55.997Z",
+      "author": "fgh222",
       "img": "../../assets/pizza.jpg"
     },
     {
@@ -23,6 +15,14 @@
       "date": "2020-07-27T09:05:29.130Z",
       "author": "author",
       "img": "../../assets/pizza.jpg"
+    },
+    {
+      "title": "123",
+      "text": "123",
+      "date": "2020-07-28T08:46:40.372Z",
+      "author": "123",
+      "img": "../../assets/pizza.jpg",
+      "id": 7
     }
   ]
 }

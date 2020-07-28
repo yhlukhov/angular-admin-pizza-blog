@@ -24,7 +24,6 @@ export class BlogComponent implements OnInit {
   }
 
   addBlog() {
-
     if (this.blogTitle.length > 0 && this.blogText.length > 0 && this.blogAuthor.length > 0) {
       const blog = new Blog(this.editId, this.blogTitle, this.blogText, new Date(), this.blogAuthor, "../../assets/pizza.jpg")
       if (!this.editStatus) {
@@ -34,11 +33,9 @@ export class BlogComponent implements OnInit {
         })
       }
       else {
-        if (confirm("Are you sure you want to edit this blog?")) {
-          this.blogService.updateBlog(blog).subscribe(()=>{
-            this.getBlogList()
-          })
-        }
+        this.blogService.updateBlog(blog).subscribe(() => {
+          this.getBlogList()
+        })
         this.editStatus = false
       }
       this.clearInput()
@@ -49,7 +46,14 @@ export class BlogComponent implements OnInit {
   editBlog(blog: IBlog) {
     this.editId = blog.id
     this.editStatus = true
-    this.addBlog()
+    this.blogTitle = blog.title
+    this.blogText = blog.text
+    this.blogAuthor = blog.author
+  }
+
+  cancelEditBlog() {
+    this.editStatus = false
+    this.clearInput()
   }
 
   deleteBlog(blog: IBlog) {
