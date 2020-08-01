@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'admin', component: AdminComponent, children: [
-    { path: '', redirectTo: 'product', pathMatch: 'full'},
+    { path: '', redirectTo: 'category', pathMatch: 'full'},
     { path: 'product', component: ProductComponent },
     { path: 'category', component: CategoryComponent },
     { path: 'blog', component: BlogComponent },

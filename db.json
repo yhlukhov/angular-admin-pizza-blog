@@ -24,5 +24,32 @@
       "img": "../../assets/pizza.jpg",
       "id": 7
     }
+  ],
+  "categories": [
+    {
+      "nameEN": "pizza",
+      "nameUA": "піцца",
+      "id": 1
+    },
+    {
+      "nameEN": "salad",
+      "nameUA": "салати",
+      "id": 2
+    },
+    {
+      "nameEN": "meat",
+      "nameUA": "мясо",
+      "id": 3
+    },
+    {
+      "nameEN": "drinks",
+      "nameUA": "напої",
+      "id": 4
+    },
+    {
+      "nameEN": "fries",
+      "nameUA": "жарене",
+      "id": 5
+    }
   ]
 }
