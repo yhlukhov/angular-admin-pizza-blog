@@ -15,7 +15,7 @@ import { AdminComponent } from './admin/admin.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { BlogComponent } from './admin/blog/blog.component';
 import { FilterCategoryPipe } from './admin/category/filter-category.pipe';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
-    NoopAnimationsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
