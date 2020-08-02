@@ -1,34 +1,48 @@
 <form>
-    <p *ngIf="!validInput" style="color: crimson;">All fields should be prefilled:</p>
-    <input type="text" class="form-control mb-2" [(ngModel)]="blogTitle" name="blogTitle" required minlength="2" placeholder="title here...">
-    <input type="textarea" class="form-control mb-2" [(ngModel)]="blogText" name="blogText" required minlength="2" placeholder="text here...">
-    <input type="text" class="form-control mb-2" [(ngModel)]="blogAuthor" name="blogAuthor" required minlength="2" placeholder="author here...">
-    <button *ngIf="!editStatus" class="btn btn-dark" (click)="addBlog()">Add</button>
-    <button *ngIf="editStatus" class="btn btn-warning" (click)="addBlog()">Edit #{{editId}}</button>
-    <button *ngIf="editStatus" class="btn btn-info ml-2" (click)="cancelEditBlog()">Cancel</button>
+  <p *ngIf="!validInput" style="color: crimson;">All fields should be prefilled:</p>
+  <input type="text" class="form-control mb-2" [(ngModel)]="blogTitle" name="blogTitle" required minlength="2"
+         placeholder="title here...">
+  <input type="textarea" class="form-control mb-2" [(ngModel)]="blogText" name="blogText" required minlength="2"
+         placeholder="text here...">
+  <input type="text" class="form-control mb-2" [(ngModel)]="blogAuthor" name="blogAuthor" required minlength="2"
+         placeholder="author here...">
+  <button *ngIf="!editStatus" class="btn btn-dark" (click)="addBlog()">Add</button>
+  <button *ngIf="editStatus" class="btn btn-warning" (click)="addBlog()">Edit #{{editId}}</button>
+  <button *ngIf="editStatus" class="btn btn-info ml-2" (click)="cancelEditBlog()">Cancel</button>
 </form>
 
 <table class="table mt-4">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>Text</th>
-        <th>Date</th>
-        <th>Author</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let blog of blogList">
-        <td>{{blog.id}}</td>
-        <td>{{blog.title}}</td>
-        <td>{{blog.text}}</td>
-        <td>{{blog.date | date:short}}</td>
-        <td>{{blog.author}}</td>
-        <td><button class="btn btn-warning" (click)="editBlog(blog)">Edit</button></td>
-        <td><button class="btn btn-danger" (click)="deleteBlog(blog)">Delete</button></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Date</th>
+      <th>Author</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let blog of blogList">
+      <td>{{blog.id}}</td>
+      <td>{{blog.title}}</td>
+      <td>{{blog.text}}</td>
+      <td>{{blog.date | date:short}}</td>
+      <td>{{blog.author}}</td>
+      <td><button class="btn btn-warning" (click)="editBlog(blog)">Edit</button></td>
+      <!-- <td><button class="btn btn-danger" (click)="deleteBlog(blog)">Delete</button></td> -->
+      <td><button class="btn btn-outline-danger"
+                mwlConfirmationPopover
+                [popoverTitle]="popoverTitle"
+                [popoverMessage]="popoverMessage"
+                [confirmText]="confirmText"
+                [cancelText]="cancelText"
+                (confirm)="deleteBlog(blog)"
+                confirmButtonType="danger"
+                cancelButtonType="outline-secondary">
+          Delete
+        </button></td>
+    </tr>
+  </tbody>
+</table>

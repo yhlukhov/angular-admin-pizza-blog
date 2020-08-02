@@ -23,6 +23,10 @@ export class CategoryComponent implements OnInit {
   sortNameUaUp = false
   sortNameUaDown = false
   filterStr = ''
+  //popower
+  popoverTitle = 'Delete category'
+  popoverMessage = 'Are you sure you want to delete the category?'
+  confirmText = 'Delete'
 
   constructor(public categoryService: CategoryService, private modalService: BsModalService) { }
 
@@ -49,7 +53,6 @@ export class CategoryComponent implements OnInit {
   }
 
   deleteCategory(category) {
-    if (confirm("Are you sure you want to delete this category?"))
       this.categoryService.deleteCategory(category).subscribe(() => {
         this.getCategoryList()
       })

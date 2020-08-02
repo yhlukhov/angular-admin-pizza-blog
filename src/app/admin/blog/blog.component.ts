@@ -17,6 +17,11 @@ export class BlogComponent implements OnInit {
   validInput = true
   editStatus = false
   editId = -1
+  //popover
+  popoverTitle = 'Delete blog'
+  popoverMessage = 'Are you sure you want to delete the blog?'
+  confirmText = 'Delete'
+
   constructor(private blogService: BlogService) { }
 
   ngOnInit(): void {
@@ -57,7 +62,6 @@ export class BlogComponent implements OnInit {
   }
 
   deleteBlog(blog: IBlog) {
-    if (confirm("Are you sure you want to delete this record?"))
       this.blogService.deleteBlog(blog.id).subscribe(() => {
         this.getBlogList()
       })

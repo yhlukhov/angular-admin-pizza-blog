@@ -15,14 +15,6 @@
       "date": "2020-07-27T09:05:29.130Z",
       "author": "author",
       "img": "../../assets/pizza.jpg"
-    },
-    {
-      "title": "123",
-      "text": "123",
-      "date": "2020-07-28T08:46:40.372Z",
-      "author": "123",
-      "img": "../../assets/pizza.jpg",
-      "id": 7
     }
   ],
   "categories": [
@@ -45,11 +37,6 @@
       "nameEN": "drinks",
       "nameUA": "напої",
       "id": 4
-    },
-    {
-      "nameEN": "fries",
-      "nameUA": "жарене",
-      "id": 5
     }
   ]
 }
