@@ -9,7 +9,7 @@
     <table class="table">
       <thead class="thead-dark">
         <tr>
-          <th scope="col" class="tHeader" (click)="sort('id')">№<i class="ml-1"
+          <th scope="col" class="tHeader" (click)="sort('id')">ID<i class="ml-1"
                [ngClass]="{'arrow-down': sortIdDown, 'arrow-up': sortIdUp}"></i></th>
           <th scope="col" class="tHeader" (click)="sort('en')">NameEN<i class="ml-1"
                [ngClass]="{'arrow-down': sortNameEnDown, 'arrow-up': sortNameEnUp}"></i></th>
@@ -55,18 +55,5 @@
     <input type="text" class="form-control" [(ngModel)]="nameUA">
     <button class="btn btn-dark mt-2" (click)="modalRef.hide()">Close</button>
     <button class="btn btn-success ml-2 mt-2" (click)="addCategory()">Add</button>
-  </div>
-</ng-template>
-
-<ng-template #deleteTemplate>
-  <div class="modal-header">
-    <h4 class="modal-title pull-left">Are you sure you want to delete this category?</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <button class="btn btn-dark mt-2" (click)="modalRef.hide()">Close</button>
-    <button class="btn btn-success ml-2 mt-2" (click)="deleteCategory()">Delete</button>
   </div>
 </ng-template>

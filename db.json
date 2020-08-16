@@ -38,5 +38,81 @@
       "nameUA": "напої",
       "id": 4
     }
+  ],
+  "products": [
+    {
+      "category": {
+        "nameEN": "pizza",
+        "nameUA": "піцца",
+        "id": 1
+      },
+      "nameEN": "ppp",
+      "nameUA": "pppp",
+      "description": "ppppp",
+      "weight": "5",
+      "price": 70,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=8f1832fb-af56-4076-943f-7bf66e92869c",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "category": {
+        "nameEN": "meat",
+        "nameUA": "мясо",
+        "id": 3
+      },
+      "nameEN": "s",
+      "nameUA": "ss",
+      "description": "sss",
+      "weight": "4",
+      "price": 45,
+      "count": 1,
+      "id": 2,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fchopped-salad.jpeg?alt=media&token=d928f991-7e58-4e07-b684-691239f26c95"
+    },
+    {
+      "category": {
+        "nameEN": "salad",
+        "nameUA": "салати",
+        "id": 2
+      },
+      "nameEN": "s",
+      "nameUA": "s",
+      "description": "s",
+      "weight": "4",
+      "price": 40,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=d47c5aa0-8d1b-442b-8e00-798dca0ef3b8",
+      "count": 1,
+      "id": 3
+    },
+    {
+      "category": {
+        "nameEN": "drinks",
+        "nameUA": "напої",
+        "id": 4
+      },
+      "nameEN": "d",
+      "nameUA": "d",
+      "description": "d",
+      "weight": "5",
+      "price": 43,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fchopped-salad.jpeg?alt=media&token=e8b61975-bf77-4f7f-8be3-86b3271aa16c",
+      "count": 1,
+      "id": 8
+    }
+  ],
+  "discounts": [
+    {
+      "title": "discount",
+      "text": "20%",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2F20.jpeg?alt=media&token=7413afe0-f46c-4b5b-99b0-39479d199875",
+      "id": 2
+    },
+    {
+      "title": "discount 2",
+      "text": "30%",
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2F30.png?alt=media&token=475abf60-efc2-4990-b410-593a52e702fb",
+      "id": 3
+    }
   ]
 }

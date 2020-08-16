@@ -1,0 +1,22 @@
+th {
+    cursor: pointer;
+}
+
+.image {
+    position: relative;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-image: url(../../../assets/close.png);
+    background-size: contain;
+    z-index: 1;
+}
+.closeIcon:hover {
+    box-shadow: 1px 1px 3px darkred;
+}

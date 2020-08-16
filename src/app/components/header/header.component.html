@@ -1,0 +1,76 @@
+<!-- <nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">La Pizza</a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/menu/pizza" routerLinkActive="active">Pizza</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/menu/salad" routerLinkActive="active">Salad</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/menu/drinks" routerLinkActive="active">Drinks</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/discounts" routerLinkActive="active">Discounts</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blog</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/basket" routerLinkActive="active">Basket:</a>
+      <span style="color: rgb(190, 205, 50);">{{totalPrice}}грн</span>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+    </li>
+  </ul>
+</nav> -->
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">LA PIZZA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home"  routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/menu/pizza" routerLinkActive="active">Pizza</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/menu/salad" routerLinkActive="active">Salad</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/menu/drinks" routerLinkActive="active">Drinks</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/discounts" routerLinkActive="active">Discounts</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/blogs" routerLinkActive="active">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/basket" routerLinkActive="active">Basket: <span style="color: green;">{{totalPrice}}грн</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<router-outlet></router-outlet>

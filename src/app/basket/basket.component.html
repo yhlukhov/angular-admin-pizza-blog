@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <div class="sectionTitle fadeInTop hidden-xs">
+          <h1 class="h1 as">Оформити замовлення</h1>
+          <div class="emptySpace60 emptySpace-lt40 emptySpace-md30"></div>
+        </div>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Товар</th>
+          <th scope="col">Ціна</th>
+          <th scope="col">Кількість</th>
+          <th scope="col">Загалом</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let o of order; index as i">
+          <td>{{i+1}}</td>
+          <td>
+              <img [src]="o.image" style="max-width: 80px; max-height: 80px;">
+              <span>{{o.nameUA}}</span>
+            </td>
+          <td>{{o.price}}</td>
+          <td>{{o.count}}</td>
+          <td>{{ o.price * o.count }}</td>
+        </tr>
+        <tr>
+          <td colspan="3"></td>
+          <td>Знижка: 0 грн</td>
+          <td>Загалом:  грн</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

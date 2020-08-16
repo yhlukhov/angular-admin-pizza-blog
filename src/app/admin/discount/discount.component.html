@@ -1,0 +1,125 @@
+<form>
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span>Discount</span>
+    <button class="btn btn-dark w-25" (click)="openModal(addTemplate)">Add</button>
+  </div>
+  <div class="m-3">
+    <input class="form-control" type="text" [(ngModel)]="filterStr" name="filterStr" placeholder="filter discounts">
+    <hr>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="tHeader" (click)="sort('id')">ID<i class="ml-1"
+               [ngClass]="{'arrow-down': down && sortId, 'arrow-up': up && sortId}"></i></th>
+          <th scope="col" class="tHeader" (click)="sort('title')">Title<i class="ml-1"
+               [ngClass]="{'arrow-down': down && sortTitle, 'arrow-up': up && sortTitle}"></i></th>
+          <th scope="col" class="tHeader" (click)="sort('text')">Text<i class="ml-1"
+               [ngClass]="{'arrow-down': down && sortText, 'arrow-up': up && sortText}"></i></th>
+          <th>Image</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let discount of (discountList | filterDiscount:filterStr | sortBy: sortDirection : sortColumn)">
+          <td>{{discount.id}}</td>
+          <td>{{discount.title}}</td>
+          <td>{{discount.text}}</td>
+          <td><img [src]="discount.image" style="width: 100px;height: 100px;"></td>
+          <td><button class="btn btn-outline-warning" (click)="openModal(editTemplate, discount)">Edit</button></td>
+          <td><button class="btn btn-outline-danger" (click)="openModal(deleteTemplate, discount)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</form>
+
+<ng-template #addTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Discount</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dTitle">Title</label>
+        <input [(ngModel)]="dTitle" name="dTitle" type="text" class="form-control" id="dTitle"
+               placeholder="title here..">
+      </div>
+      <div class="form-group">
+        <label for="dText">Text</label>
+        <textarea [(ngModel)]="dText" name="dText" id="dText" class="form-control"
+                  style="width: 100%; min-height: 200px;" placeholder="text here..."></textarea>
+      </div>
+      <div class="custom-file" *ngIf="!imageStatus">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" (change)="uploadFile($event)" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      </div>
+      <div class="imgContainer" *ngIf="imageStatus">
+        <img class="img" [src]="dImage">
+        <img class="imgDel" src="../../../assets/close.png" (click)="delImage()">
+      </div>
+      <div class="progress">
+        <div id="imageLoad" class="progress-bar progress-bar-striped bg-info" role="progressbar" aria-valuemin="0"
+             aria-valuemax="100" [style.width]="(uploadProgress | async) + '%'"></div>
+      </div>
+      <button type="button" class="btn btn-primary mt-2" (click)="addDiscount()"
+              [textContent]="'Add discount'"></button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #editTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Edit Discount</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dTitle">Title</label>
+        <input [(ngModel)]="dTitle" name="dTitle" type="text" class="form-control" id="dTitle"
+               placeholder="title here..">
+      </div>
+      <div class="form-group">
+        <label for="dText">Text</label>
+        <textarea [(ngModel)]="dText" name="dText" id="dText" class="form-control"
+                  style="width: 100%; min-height: 200px;" placeholder="text here..."></textarea>
+      </div>
+      <div class="custom-file" *ngIf="!imageStatus">
+        <input type="file" class="custom-file-input" id="validatedCustomFile" (change)="uploadFile($event)" required>
+        <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+      </div>
+      <div class="imgContainer" *ngIf="imageStatus">
+        <img class="img" [src]="dImage">
+        <img class="imgDel" src="../../../assets/close.png" (click)="delImage()">
+      </div>
+      <div class="progress">
+        <div id="imageLoad" class="progress-bar progress-bar-striped bg-info" role="progressbar" aria-valuemin="0"
+             aria-valuemax="100" [style.width]="(uploadProgress | async) + '%'"></div>
+      </div>
+      <button type="button" class="btn btn-primary mt-2" (click)="updateDiscount(discountBox)"
+              [textContent]="'Update discount'"></button>
+    </form>
+  </div>
+</ng-template>
+
+<ng-template #deleteTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Delete Discount</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <p>Are you sure you want to delete this discount?</p>
+      <button class="btn btn-outline-secondary" (click)="modalRef.hide()">Cancel</button>
+      <button class="btn btn-danger" (click)="deleteDisc(discountBox)">Delete</button>
+    </form>
+  </div>
+</ng-template>

@@ -9,19 +9,26 @@ import { AdminComponent } from './admin/admin.component';
 import { ProductComponent } from './admin/product/product.component';
 import { CategoryComponent } from './admin/category/category.component';
 import { BlogComponent } from './admin/blog/blog.component';
-
-import { from } from 'rxjs';
+import { DiscountComponent } from './admin/discount/discount.component';
+import { DiscountsComponent } from './discounts/discounts.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { BasketComponent } from './basket/basket.component';
 
 const routes: Routes = [
-  { path: 'home', redirectTo: '', pathMatch: 'full' },
+  // { path: 'home', redirectTo: '', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: '', component: HomeComponent },
+  { path: 'discounts', component: DiscountsComponent },
   { path: 'blogs', component: BlogsComponent },
-  { path: 'products', component: ProductsComponent },
+  { path: 'menu/:category', component: ProductsComponent },
+  { path: 'menu/:category/:id', component: ProductDetailsComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'basket', component: BasketComponent },
   { path: 'admin', component: AdminComponent, children: [
     { path: '', redirectTo: 'category', pathMatch: 'full'},
     { path: 'product', component: ProductComponent },
     { path: 'category', component: CategoryComponent },
+    { path: 'discount', component: DiscountComponent },
     { path: 'blog', component: BlogComponent },
   ] },
 ];
