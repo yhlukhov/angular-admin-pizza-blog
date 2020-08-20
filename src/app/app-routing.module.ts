@@ -11,6 +11,7 @@ import { CategoryComponent } from './admin/category/category.component';
 import { BlogComponent } from './admin/blog/blog.component';
 import { DiscountComponent } from './admin/discount/discount.component';
 import { DiscountsComponent } from './discounts/discounts.component';
+import { OrdersComponent } from './admin/orders/orders.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BasketComponent } from './basket/basket.component';
 
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'product', component: ProductComponent },
     { path: 'category', component: CategoryComponent },
     { path: 'discount', component: DiscountComponent },
+    { path: 'orders', component: OrdersComponent },
     { path: 'blog', component: BlogComponent },
   ] },
 ];

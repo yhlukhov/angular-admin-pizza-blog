@@ -1,0 +1,13 @@
+.formContainer {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+input, textarea {
+    border: 1px solid lightblue;
+    border-radius: 5px;
+}
+
+label {
+    display: inline-block;
+}

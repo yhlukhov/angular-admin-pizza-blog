@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
@@ -34,6 +35,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DiscountsComponent } from './discounts/discounts.component';
 import { BasketComponent } from './basket/basket.component';
+import { ProductCountComponent } from './components/product-count/product-count.component';
+import { OrdersComponent } from './admin/orders/orders.component';
+import { ChooseDeliveryComponent } from './components/choose-delivery/choose-delivery.component';
 
 
 @NgModule({
@@ -55,6 +59,9 @@ import { BasketComponent } from './basket/basket.component';
     FooterComponent,
     DiscountsComponent,
     BasketComponent,
+    ProductCountComponent,
+    OrdersComponent,
+    ChooseDeliveryComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +82,7 @@ import { BasketComponent } from './basket/basket.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     NgpSortModule,
+    ButtonsModule.forRoot(),
     OrderModule,
   ],
   providers: [],

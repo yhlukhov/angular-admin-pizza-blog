@@ -1,0 +1,5 @@
+<div class="productCountWrapper">
+    <span class="productCount lessProduct" (click)="increase('-')"></span>
+    <input class="product-qty-single" type="text" maxlength="3" [value]="product?.count">
+    <span class="productCount moreProduct" (click)="increase('+')"></span>
+  </div>

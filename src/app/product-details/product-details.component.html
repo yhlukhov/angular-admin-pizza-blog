@@ -70,11 +70,12 @@
               <div class="orderPrizeSection productOrder">
                 <div class="orderDetailSection smallSlideLeft animationDelay-4">
                   <p class="counterTitle">Кількість: </p>
-                  <div class="productCountWrapper">
+                  <!-- <div class="productCountWrapper">
                     <span class="productCount lessProduct" (click)="increase('-')"></span>
                     <input class="product-qty-single" type="text" maxlength="3" [value]="product?.count">
                     <span class="productCount moreProduct" (click)="increase('+')"></span>
-                  </div>
+                  </div> -->
+                  <app-product-count [product]="product"></app-product-count>
                 </div>
                 <div class="emptySpace30 emptySpace-xs25"></div>
                 <div class="orderDetailSection smallSlideLeft animationDelay-5">
@@ -86,7 +87,7 @@
               </div>
               <div class="emptySpace25 emptySpace-xs5"></div>
               <div class="fadeInTop animationDelay-6">
-                <div class="button addToCart update-cart-product-single" (click)="makeOrder()">ЗАМОВИТИ</div>
+                <div class="button addToCart update-cart-product-single" (click)="addBasket(product)">ЗАМОВИТИ</div>
               </div>
             </div>
           </div>

@@ -36,27 +36,9 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  productCount(prod:IProduct, val:boolean) {
-    if (val) prod.count++
-    else if(prod.count>1) prod.count--
-  }
-
   addBasket(product:IProduct) {
-    let localProducts:Array<IProduct> = []
-    if (localStorage.length > 0 && localStorage.getItem('myOrder')) {
-      localProducts = JSON.parse(localStorage.getItem('myOrder'))
-      if(localProducts.some(prod => product.id === prod.id)) {
-        const index = localProducts.findIndex(prod => prod.id === product.id)
-        localProducts[index].count += product.count
-      }
-      else localProducts.push(product)
-    }
-    else {
-      localProducts.push(product)
-    }
-    localStorage.setItem("myOrder", JSON.stringify(localProducts))
-    this.orderService.basket.next(localProducts)
-    product.count = 1
+    this.orderService.addBasket(product)
+    // product.count = 1
   }
 
 }

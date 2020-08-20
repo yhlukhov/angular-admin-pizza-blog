@@ -22,11 +22,7 @@
               <div class="productPrice">
                 <span>{{ prod.price * prod.count }}</span> <i>грн</i>
               </div>
-              <div class="productCountWrapper">
-                <span class="productCount lessProduct" (click)="productCount(prod, false)"></span>
-                <input type="text" maxlength="3" [value]="prod.count">
-                <span class="productCount moreProduct" (click)="productCount(prod, true)"></span>
-              </div>
+              <app-product-count [product]="prod"></app-product-count>
               <div class="button add-to-cart-product" (click)="addBasket(prod)">Замовити</div>
             </div>
           </div>

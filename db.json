@@ -114,5 +114,187 @@
       "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2F30.png?alt=media&token=475abf60-efc2-4990-b410-593a52e702fb",
       "id": 3
     }
+  ],
+  "orders": [
+    {
+      "userName": "Іван",
+      "userPhone": "384875-34",
+      "userCity": "Львів",
+      "userStreet": "львівська",
+      "userHouse": "38",
+      "ordersDetails": [
+        {
+          "category": {
+            "nameEN": "pizza",
+            "nameUA": "піцца",
+            "id": 1
+          },
+          "nameEN": "ppp",
+          "nameUA": "pppp",
+          "description": "ppppp",
+          "weight": "5",
+          "price": 70,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=8f1832fb-af56-4076-943f-7bf66e92869c",
+          "count": 1,
+          "id": 1
+        },
+        {
+          "category": {
+            "nameEN": "salad",
+            "nameUA": "салат",
+            "id": 2
+          },
+          "nameEN": "cezar",
+          "nameUA": "Салат Цезар зі смаженим курячим філе",
+          "description": "Салат айсберг, помідори, куряче м`ясо, сир пармезан, перепелині яйця, духмяні сухарики та фірмова заправка.",
+          "weight": "250 гр",
+          "price": 125,
+          "image": "https://firebasestorage.googleapis.com/v0/b/juniors-64e5f.appspot.com/o/images%2Ftsezar-z-kurkoyu.png?alt=media&token=4e8ecbf7-07b1-4852-9deb-45ed44e07845",
+          "count": 1,
+          "id": 2
+        },
+        {
+          "category": {
+            "nameEN": "drinks",
+            "nameUA": "напої",
+            "id": 3
+          },
+          "nameEN": "rich-orange",
+          "nameUA": "Апельсиновий нектар з м'якоттю",
+          "description": "Апельсиновий нектар з м'якоттю, 1 л, ТМ “RICH”",
+          "weight": "1 л",
+          "price": 42,
+          "image": "https://firebasestorage.googleapis.com/v0/b/juniors-64e5f.appspot.com/o/images%2Frich_orange.jpeg?alt=media&token=5868836f-2033-425a-96d6-cfef5624734c",
+          "count": 1,
+          "id": 3
+        }
+      ],
+      "totalPayment": 237,
+      "delivery": "advance",
+      "dateOrder": "2020-08-20T09:44:35.143Z",
+      "status": "in progress",
+      "userComment": "тест",
+      "id": 3
+    },
+    {
+      "userName": "Василь",
+      "userPhone": "384785785",
+      "userCity": "Львов",
+      "userStreet": "Любинска",
+      "userHouse": "38",
+      "ordersDetails": [
+        {
+          "category": {
+            "nameEN": "pizza",
+            "nameUA": "піцца",
+            "id": 1
+          },
+          "nameEN": "ppp",
+          "nameUA": "pppp",
+          "description": "ppppp",
+          "weight": "5",
+          "price": 70,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=8f1832fb-af56-4076-943f-7bf66e92869c",
+          "count": 2,
+          "id": 1
+        },
+        {
+          "category": {
+            "nameEN": "salad",
+            "nameUA": "салат",
+            "id": 2
+          },
+          "nameEN": "cezar",
+          "nameUA": "Салат Цезар зі смаженим курячим філе",
+          "description": "Салат айсберг, помідори, куряче м`ясо, сир пармезан, перепелині яйця, духмяні сухарики та фірмова заправка.",
+          "weight": "250 гр",
+          "price": 125,
+          "image": "https://firebasestorage.googleapis.com/v0/b/juniors-64e5f.appspot.com/o/images%2Ftsezar-z-kurkoyu.png?alt=media&token=4e8ecbf7-07b1-4852-9deb-45ed44e07845",
+          "count": 1,
+          "id": 2
+        },
+        {
+          "category": {
+            "nameEN": "drinks",
+            "nameUA": "напої",
+            "id": 3
+          },
+          "nameEN": "rich-orange",
+          "nameUA": "Апельсиновий нектар з м'якоттю",
+          "description": "Апельсиновий нектар з м'якоттю, 1 л, ТМ “RICH”",
+          "weight": "1 л",
+          "price": 42,
+          "image": "https://firebasestorage.googleapis.com/v0/b/juniors-64e5f.appspot.com/o/images%2Frich_orange.jpeg?alt=media&token=5868836f-2033-425a-96d6-cfef5624734c",
+          "count": 3,
+          "id": 3
+        }
+      ],
+      "totalPayment": 391,
+      "delivery": "home",
+      "dateOrder": "2020-08-20T11:34:07.091Z",
+      "status": "in progress",
+      "userComment": "коментар Василя",
+      "id": 4
+    },
+    {
+      "userName": "Іванна",
+      "userPhone": "767867565",
+      "userCity": "Львів",
+      "userStreet": "Ворожбова",
+      "userHouse": "87",
+      "ordersDetails": [
+        {
+          "category": {
+            "nameEN": "pizza",
+            "nameUA": "піцца",
+            "id": 1
+          },
+          "nameEN": "ppp",
+          "nameUA": "pppp",
+          "description": "ppppp",
+          "weight": "5",
+          "price": 70,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=8f1832fb-af56-4076-943f-7bf66e92869c",
+          "count": 2,
+          "id": 1
+        },
+        {
+          "category": {
+            "nameEN": "salad",
+            "nameUA": "салат",
+            "id": 2
+          },
+          "nameEN": "cezar",
+          "nameUA": "Салат Цезар зі смаженим курячим філе",
+          "description": "Салат айсберг, помідори, куряче м`ясо, сир пармезан, перепелині яйця, духмяні сухарики та фірмова заправка.",
+          "weight": "250 гр",
+          "price": 125,
+          "image": "https://firebasestorage.googleapis.com/v0/b/juniors-64e5f.appspot.com/o/images%2Ftsezar-z-kurkoyu.png?alt=media&token=4e8ecbf7-07b1-4852-9deb-45ed44e07845",
+          "count": 1,
+          "id": 2
+        },
+        {
+          "category": {
+            "nameEN": "drinks",
+            "nameUA": "напої",
+            "id": 3
+          },
+          "nameEN": "rich-orange",
+          "nameUA": "Апельсиновий нектар з м'якоттю",
+          "description": "Апельсиновий нектар з м'якоттю, 1 л, ТМ “RICH”",
+          "weight": "1 л",
+          "price": 42,
+          "image": "https://firebasestorage.googleapis.com/v0/b/juniors-64e5f.appspot.com/o/images%2Frich_orange.jpeg?alt=media&token=5868836f-2033-425a-96d6-cfef5624734c",
+          "count": 3,
+          "id": 3
+        }
+      ],
+      "totalPayment": 391,
+      "delivery": "driveway",
+      "dateOrder": "2020-08-20T12:48:27.767Z",
+      "status": "in progress",
+      "userComment": "",
+      "id": 5
+    }
   ]
 }

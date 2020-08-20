@@ -30,27 +30,21 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  increase(sign) {
-    if(sign === '+') this.product.count++
-    else if (this.product.count > 1) this.product.count--
-  }
-
-  makeOrder() {
+  addBasket(product:IProduct) {
     let localProducts:Array<IProduct> = []
-    if (localStorage.getItem('myOrder')) {
+    if (localStorage.length > 0 && localStorage.getItem('myOrder')) {
       localProducts = JSON.parse(localStorage.getItem('myOrder'))
-      let localProduct = localProducts.find(prod => prod.id === this.product.id)
-      if(localProduct) {
-        localProduct.count += this.product.count
+      if(localProducts.some(prod => product.id === prod.id)) {
+        const index = localProducts.findIndex(prod => prod.id === product.id)
+        localProducts[index].count += product.count
       }
-      else {
-        localProducts.push(this.product)
-      }
+      else localProducts.push(product)
     }
     else {
-      localProducts.push(this.product)
+      localProducts.push(product)
     }
-    localStorage.setItem('myOrder', JSON.stringify(localProducts))
-    this.orderService.basket.next(this.product)
+    localStorage.setItem("myOrder", JSON.stringify(localProducts))
+    this.orderService.basket.next(localProducts)
+    product.count = 1
   }
 }
