@@ -26,7 +26,6 @@
           <span>{{o.nameUA}}</span>
         </td>
         <td>{{o.price}} грн</td>
-        <!-- <td>{{o.count}}</td> -->
         <td>
           <img src="../../assets/left-arrow.png" style="width: 20px; margin-right: 5px; cursor: pointer;"
                (click)="increase(o, '-')">
@@ -50,43 +49,40 @@
   </table>
 </div>
 
-<div class="formContainer">
-  <h3>Fill order data</h3>
-  <form (submit)="addOrder()">
-    <!-- <div class="btn-group" btnRadioGroup [(ngModel)]="delivery" name="delivery">
-      <label class="btn btn-success" btnRadio="home"
-             tabindex="0" role="button">Доставка на дом</label>
-      <label class="btn btn-success pl-4 pr-4" btnRadio="driveway"
-             tabindex="0" role="button">Самовивіз</label>
-      <label class="btn btn-success" btnRadio="anvance"
-             tabindex="0" role="button">Заздалегідь</label>
-    </div> -->
-    <app-choose-delivery (deliveryEvent)=setDelivery($event)></app-choose-delivery>
+<div *ngIf="order.length>0" class="formContainer">
+  <h3 style="margin-bottom: 5px;">Заповніть деталі</h3>
+  <form #orderForm="ngForm" (submit)="addOrder(orderForm)" novalidate>
+    <app-choose-delivery [deliveryInput]="delivery" (deliveryEvent)=setDelivery($event)></app-choose-delivery>
     <div>
-      <label for="userName">Імя:</label>
-      <input type="text" id="userName" [(ngModel)]="userName" name="userName">
+      <label for="userName">Імя*:</label>
+      <input type="text" id="userName" ngModel="" name="userName" #name="ngModel" required>
+      <div class="error-message" [hidden]="name.valid || name.untouched">Не введене імя</div>
     </div>
     <div>
-      <label for="userPhone">Телефон:</label>
-      <input type="text" id="userPhone" [(ngModel)]="userPhone" name="userPhone">
+      <label for="userPhone">Телефон*:</label>
+      <input type="text" id="userPhone" ngModel="" name="userPhone" #phone="ngModel" required>
+      <div class="error-message" [hidden]="phone.valid || phone.untouched">Не введене телефон</div>
     </div>
     <div>
-      <label for="userCity">Місто:</label>
-      <input type="text" id="userCity" [(ngModel)]="userCity" name="userCity">
+      <label for="userCity">Місто*:</label>
+      <input type="text" id="userCity" ngModel="" name="userCity" #city="ngModel" required>
+      <div class="error-message" [hidden]="city.valid || city.untouched">Не введене місто</div>
     </div>
     <div>
-      <label for="userStreet">Вулиця:</label>
-      <input type="text" id="userStreet" [(ngModel)]="userStreet" name="userStreet">
+      <label for="userStreet">Вулиця*:</label>
+      <input type="text" id="userStreet" ngModel="" name="userStreet" #street="ngModel" required>
+      <div class="error-message" [hidden]="street.valid || street.untouched">Не введене вулиця</div>
     </div>
     <div>
-      <label for="userHouse">Будинок:</label>
-      <input type="text" id="userHouse" [(ngModel)]="userHouse" name="userHouse">
+      <label for="userHouse">Будинок*:</label>
+      <input type="text" id="userHouse" ngModel="" name="userHouse" #house="ngModel" required>
+      <div class="error-message" [hidden]="house.valid || house.untouched">Не введене house</div>
     </div>
     <div>
       <label for="userComment">Коментар:</label>
-      <textarea name="userComment" id="userComment" [(ngModel)]="userComment"></textarea>
+      <textarea name="userComment" id="userComment" ngModel=""></textarea>
     </div>
-    <button type="submit" class="btn btn-success mt-3 w-100">Відправити замовлення</button>
+    <button type="submit" [disabled]="orderForm.invalid" class="btn btn-success mt-3 w-100">Відправити замовлення</button>
   </form>
 </div>
 

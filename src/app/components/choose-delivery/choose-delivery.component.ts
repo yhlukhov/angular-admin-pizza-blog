@@ -7,10 +7,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ChooseDeliveryComponent implements OnInit {
   @Output() deliveryEvent = new EventEmitter<string>();
+  @Input() deliveryInput:string
   delivery:string
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.deliveryInput)
+    this.delivery = this.deliveryInput
   }
 
   selectDelivery(value: string) {

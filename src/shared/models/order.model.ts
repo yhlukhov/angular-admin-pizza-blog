@@ -14,6 +14,7 @@ export class Order implements IOrder {
         public delivery: string,
         public dateOrder: Date,
         public status: string = "in progress",
-        public userComment: string = ''
+        public userComment: string = '',
+        public hidden = false
     ) { }
 }

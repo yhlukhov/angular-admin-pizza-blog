@@ -13,4 +13,5 @@ export interface IOrder {
     dateOrder: Date;
     status: string;
     userComment: string;
+    hidden: boolean
 }

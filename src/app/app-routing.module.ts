@@ -14,6 +14,8 @@ import { DiscountsComponent } from './discounts/discounts.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BasketComponent } from './basket/basket.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
   // { path: 'home', redirectTo: '', pathMatch: 'full' },
@@ -25,7 +27,7 @@ const routes: Routes = [
   { path: 'menu/:category/:id', component: ProductDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'basket', component: BasketComponent },
-  { path: 'admin', component: AdminComponent, children: [
+  { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], children: [
     { path: '', redirectTo: 'category', pathMatch: 'full'},
     { path: 'product', component: ProductComponent },
     { path: 'category', component: CategoryComponent },
@@ -33,6 +35,7 @@ const routes: Routes = [
     { path: 'orders', component: OrdersComponent },
     { path: 'blog', component: BlogComponent },
   ] },
+  { path: 'admin-login', component: AdminLoginComponent}
 ];
 
 @NgModule({

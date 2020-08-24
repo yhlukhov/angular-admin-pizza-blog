@@ -1,8 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NgForm } from '@angular/forms';
 import { OrderService } from 'src/shared/services/order.service';
 import { IProduct } from 'src/shared/interfaces/product.interface';
 import { Order } from '../../shared/models/order.model';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-basket',
@@ -14,7 +16,7 @@ export class BasketComponent implements OnInit {
   totalPrice = 0
   modalRef: BsModalRef
   remProd:IProduct
-  delivery:string
+  delivery:string = 'home'
   userName: string
   userPhone: string
   userCity: string
@@ -69,25 +71,33 @@ export class BasketComponent implements OnInit {
     this.remProd = remProd
   }
 
-  addOrder() {
+  addOrder(form:NgForm) {
     let newOrder = new Order(
       1,
-      this.userName,
-      this.userPhone,
-      this.userCity,
-      this.userStreet,
-      this.userHouse,
+      form.controls.userName.value,
+      form.controls.userPhone.value,
+      form.controls.userCity.value,
+      form.controls.userStreet.value,
+      form.controls.userHouse.value,
       this.order,
       this.totalPrice,
       this.delivery,
       new Date(),
       this.status,
-      this.userComment
+      form.controls.userComment.value
     );
     delete(newOrder.id)
     this.orderService.addOrder(newOrder).subscribe(data => {
       console.log(data)
+      this.resetBasket()
     })
+  }
+
+  resetBasket() {
+    localStorage.removeItem('myOrder')
+    this.totalPrice = 0
+    this.order = []
+    this.orderService.basket.next('next')
   }
 
   setDelivery(eventItem:string) {

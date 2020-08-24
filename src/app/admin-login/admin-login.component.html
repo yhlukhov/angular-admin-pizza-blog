@@ -1,0 +1,13 @@
+<h3>Admin Login</h3>
+
+<form [formGroup]="loginForm" (submit)="adminLogin()" novalidate>
+    <input class="form-control mt-3" type="text"  name="email" formControlName="email">
+    <div class="text-danger" *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+        перевір емейл
+    </div>
+    <input class="form-control mt-3" type="password"  name="password" formControlName="password">
+    <div class="text-danger" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+        введи пароль
+    </div>
+    <button class="btn btn-success mt-3" type="submit">Login</button>
+</form>

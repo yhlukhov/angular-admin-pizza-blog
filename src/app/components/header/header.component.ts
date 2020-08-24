@@ -29,5 +29,6 @@ export class HeaderComponent implements OnInit {
         return total + prod.count*prod.price
       }, 0)
     }
+    else this.totalPrice = 0
   }
 }

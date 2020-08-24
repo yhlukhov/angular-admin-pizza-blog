@@ -40,7 +40,17 @@ export class OrdersComponent implements OnInit {
   saveOrderEdit() {
     this.order.delivery = this.delivery
     this.order.status = this.orderStatus
-    this.orderService.updateOrder(this.order)
+    this.orderService.updateOrder(this.order).subscribe(()=>{
+      console.log("update order")
+    })
+    this.modalRef.hide()
+  }
+
+  hideOrder() {
+    this.order.hidden = true
+    this.orderService.updateOrder(this.order).subscribe(()=>{
+      console.log("update order")
+    })
     this.modalRef.hide()
   }
 

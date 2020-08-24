@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from "@angular/common";
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
@@ -38,6 +39,7 @@ import { BasketComponent } from './basket/basket.component';
 import { ProductCountComponent } from './components/product-count/product-count.component';
 import { OrdersComponent } from './admin/orders/orders.component';
 import { ChooseDeliveryComponent } from './components/choose-delivery/choose-delivery.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 @NgModule({
@@ -62,11 +64,13 @@ import { ChooseDeliveryComponent } from './components/choose-delivery/choose-del
     ProductCountComponent,
     OrdersComponent,
     ChooseDeliveryComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     ModalModule.forRoot(),
     ConfirmationPopoverModule.forRoot({
