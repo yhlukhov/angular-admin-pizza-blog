@@ -11,7 +11,9 @@ export class FilterDiscountPipe implements PipeTransform {
     if (filterStr == '') return discountList
     else
       return discountList.filter(discount => {
-        return discount.id.toString().includes(filterStr) || discount.title.includes(filterStr) || discount.text.includes(filterStr)
+        return discount.id.toString().toLowerCase().includes(filterStr.toLowerCase())
+          || discount.title.toLowerCase().includes(filterStr.toLowerCase())
+          || discount.text.toLowerCase().includes(filterStr.toLowerCase())
       });
   }
 }

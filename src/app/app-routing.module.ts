@@ -16,6 +16,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { BasketComponent } from './basket/basket.component';
 import { AuthGuard } from '../shared/guards/auth.guard';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileGuard } from '../shared/guards/profile.guard';
+
 
 const routes: Routes = [
   // { path: 'home', redirectTo: '', pathMatch: 'full' },
@@ -27,6 +30,8 @@ const routes: Routes = [
   { path: 'menu/:category/:id', component: ProductDetailsComponent },
   { path: 'about', component: AboutComponent },
   { path: 'basket', component: BasketComponent },
+  { path: 'admin-login', component: AdminLoginComponent},
+  { path: 'profile', component: ProfileComponent, canActivate:[ProfileGuard]},
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], children: [
     { path: '', redirectTo: 'category', pathMatch: 'full'},
     { path: 'product', component: ProductComponent },
@@ -34,12 +39,11 @@ const routes: Routes = [
     { path: 'discount', component: DiscountComponent },
     { path: 'orders', component: OrdersComponent },
     { path: 'blog', component: BlogComponent },
-  ] },
-  { path: 'admin-login', component: AdminLoginComponent}
+  ] }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

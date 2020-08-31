@@ -1,13 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">LA PIZZA</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active">LA PIZZA</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/home"  routerLinkActive="active">Home</a>
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/menu/pizza" routerLinkActive="active">Pizza</a>
@@ -28,17 +29,92 @@
         <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/basket" routerLinkActive="active">Basket: <span style="color: green;">{{totalPrice}}грн</span></a>
+        <a class="nav-link" routerLink="/basket" routerLinkActive="active">Basket: <span
+                style="color: green;">{{totalPrice}}грн</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
       </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" routerLink="/admin-login" routerLinkActive="active">Admin login</a>
+    </ul>
+
+    <ul class="navbar-nav">
+      <li *ngIf="!statusLogin" class="nav-item">
+        <button class="btn nav-link" (click)="openModal(loginRegisterForm)">Увійти</button>
+      </li>
+      <!-- <li *ngIf="statusLogin" class="nav-item">
+        <span class="nav-link" style="color: green;">{{user?.firstName}}</span>
+        <a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
       </li> -->
+      <li *ngIf="statusLogin">
+        <a class="nav-link" [routerLink]="['/' + urlName]">{{menuName | titlecase}}</a>
+      </li>
     </ul>
   </div>
 </nav>
+
+<ng-template #loginRegisterForm>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left" *ngIf="isLogin">Логін</h4>
+    <h4 class="modal-title pull-left" *ngIf="!isLogin">Реєстрація</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+    <form [formGroup]="loginForm" *ngIf="isLogin" (submit)="login()" novalidate>
+      <label for="email">Введіть емейл:</label>
+      <input id="email" class="form-control" type="text" formControlName="email">
+      <div class="text-danger" *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched">
+        перевір емейл
+      </div>
+      <div class="mt-4"></div>
+      <label for="password">Введіть пароль:</label>
+      <input id="password" class="form-control" type="password" formControlName="password">
+      <div class="text-danger" *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].touched">
+        введи пароль
+      </div>
+      <button class="btn btn-success mt-3" type="submit">Login</button>
+    </form>
+
+    <form [formGroup]="registerForm" *ngIf="!isLogin" (submit)="register()" novalidate>
+      <label for="fName">Введіть імя:</label>
+      <input id="fName" class="form-control" type="text" name="fName" formControlName="fName">
+      <div class="text-danger" *ngIf="registerForm.controls['fName'].invalid && registerForm.controls['fName'].touched">
+        перевір емейл
+      </div>
+      <div class="mt-4"></div>
+      <label for="lName">Введіть прізвище:</label>
+      <input id="lName" class="form-control" type="text" name="lName" formControlName="lName">
+      <div class="text-danger" *ngIf="registerForm.controls['lName'].invalid && registerForm.controls['lName'].touched">
+        перевір емейл
+      </div>
+      <div class="mt-4"></div>
+      <label for="email">Введіть емейл:</label>
+      <input id="email" class="form-control" type="text" name="email" formControlName="email">
+      <div class="text-danger" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+        перевір емейл
+      </div>
+      <div class="mt-4"></div>
+      <label for="password">Введіть пароль:</label>
+      <input id="password" class="form-control" type="password" name="password" formControlName="password">
+      <div class="text-danger" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+        введи пароль
+      </div>
+      <button class="btn btn-success mt-3" type="submit">Register</button>
+    </form>
+
+    <ng-container *ngIf="isLogin">
+      <span>Не маєте акаунту?</span>
+      <button class="btn text-info font-weight-bold" (click)="switchLoginRegister()">Зареєструватись</button>
+    </ng-container>
+    <ng-container *ngIf="!isLogin">
+      <span>Уже маєте акаунт?</span>
+      <button class="btn text-info font-weight-bold" (click)="switchLoginRegister()">Увійти</button>
+    </ng-container>
+  </div>
+</ng-template>
+
 
 
 <router-outlet></router-outlet>

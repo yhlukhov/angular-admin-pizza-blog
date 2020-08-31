@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-admin',
@@ -6,30 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  productTabActive = true
-  categoryTabActive = false
-  blogTabActive = false
-  constructor() { }
+  
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
   }
 
-  focus(tabIndex:number) {
-    if(tabIndex == 1) {
-      this.productTabActive = true
-      this.categoryTabActive = false
-      this.blogTabActive = false
-    }
-    else if (tabIndex == 2) {
-      this.productTabActive = false
-      this.categoryTabActive = true
-      this.blogTabActive = false
-    }
-    else if (tabIndex == 3) {
-      this.productTabActive = false
-      this.categoryTabActive = false
-      this.blogTabActive = true
-    }
+  signOut() {
+    this.authService.signOut()
   }
-
 }

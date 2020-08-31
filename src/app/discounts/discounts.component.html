@@ -1,1 +1,7 @@
-<p>discounts works!</p>
+<div class="container">
+  <div class="discount" *ngFor="let disc of discountList">
+    <h4>{{disc.title}}</h4>
+    <p>{{disc.text}}</p>
+    <img src={{disc.image}}>
+  </div>
+</div>

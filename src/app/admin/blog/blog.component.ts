@@ -16,7 +16,7 @@ export class BlogComponent implements OnInit {
   blogAuthor = ""
   validInput = true
   editStatus = false
-  editId = -1
+  editId: number | string = -1
   //popover
   popoverTitle = 'Delete blog'
   popoverMessage = 'Are you sure you want to delete the blog?'

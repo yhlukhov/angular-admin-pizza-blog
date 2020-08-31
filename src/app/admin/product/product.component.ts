@@ -43,8 +43,10 @@ export class ProductComponent implements OnInit {
     private orderPipe: OrderPipe) { }
 
   ngOnInit(): void {
-    this.getProductsList()
-    this.getCategoryList()
+    // this.getProductsList()
+    // this.getCategoryList()
+    this.getFBProductsList()
+    this.getFBCategoryList()
   }
 
   getProductsList() {
@@ -52,10 +54,28 @@ export class ProductComponent implements OnInit {
       this.productList = data
     })
   }
+  getFBProductsList() {
+    this.productService.getFireCloudProducts().subscribe(collection => {
+      this.productList = collection.map(product => {
+        const data = product.payload.doc.data() as IProduct
+        const id = product.payload.doc.id
+        return { id, ...data }
+      })
+    })
+  }
 
   getCategoryList() {
     this.categoryService.getCategories().subscribe(data => {
       this.categoryList = data
+    })
+  }
+  getFBCategoryList() {
+    this.categoryService.getFireCloudCategories().subscribe(collection => {
+      this.categoryList = collection.map(category => {
+        const data = category.payload.doc.data() as ICategory
+        const id = category.payload.doc.id
+        return { id, ...data }
+      })
     })
   }
 
@@ -77,13 +97,23 @@ export class ProductComponent implements OnInit {
         this.productPrice,
         this.productImage);
       delete product.id;
-      this.productService.postJSONProduct(product).subscribe(
-        () => {
-          this.getProductsList();
+      this.productService.postFireCloudProduct({ ...product })
+        .then((message) => {
+          console.log("product added, ", message)
           this.modalRef.hide()
-        }
-      )
-      this.clearFields()
+          this.clearFields()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      // this.productService.postJSONProduct(product).subscribe(
+      //   () => {
+      //     this.getProductsList();
+      //     this.modalRef.hide()
+      //     this.clearFields()
+      //   }
+      // )
+
     }
     else this.productValidInput = false
   }
@@ -99,10 +129,13 @@ export class ProductComponent implements OnInit {
       this.editDeleteProd.weight = this.productWeight
       this.editDeleteProd.price = this.productPrice
       this.editDeleteProd.image = this.productImage
-      this.productService.updateJSONProduct(this.editDeleteProd).subscribe(() => {
-        this.getProductsList()
-        this.modalRef.hide()
-      })
+      this.productService.updateFireCloudProduct(this.editDeleteProd)
+      this.getFBProductsList()
+      this.modalRef.hide()
+      // this.productService.updateJSONProduct(this.editDeleteProd).subscribe(() => {
+      //   this.getProductsList()
+      //   this.modalRef.hide()
+      // })
     }
     else this.productValidInput = false
   }
@@ -173,7 +206,7 @@ export class ProductComponent implements OnInit {
     this.imageStatus = false
   }
 
-  orderBy(type:string) {
+  orderBy(type: string) {
     type === this.order ? this.reverse = !this.reverse : this.order = type
     this.productList = this.orderPipe.transform(this.productList, this.order, this.reverse)
   }

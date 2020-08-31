@@ -25,7 +25,7 @@ export class BlogService {
     return this.http.put<IBlog>(`${this.url}/${blog.id}`, blog)
   }
 
-  deleteBlog(id:number):Observable<IBlog> {
+  deleteBlog(id:number | string):Observable<IBlog> {
     return this.http.delete<IBlog>(`${this.url}/${id}`)
   }
 }

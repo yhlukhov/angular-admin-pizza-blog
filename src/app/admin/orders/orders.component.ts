@@ -20,6 +20,10 @@ export class OrdersComponent implements OnInit {
     advance: "Заздалегідь"
   }
   orderStatus: string
+  orderBy = 'dateOrder'
+  orderByReverse = false
+  sortDown = true
+  sortUp = false
 
   constructor(private orderService: OrderService, private modalService: BsModalService) { }
 
@@ -28,10 +32,19 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrderList() {
-    this.orderService.getOrders().subscribe(data => {
-      this.orderList = data
+    // this.orderService.getOrders().subscribe(data => {
+    //   this.orderList = data
+    // })
+    this.orderService.getFBOrders().subscribe(collection => {
+      this.orderList = []
+      collection.forEach(order => {
+        const id = order.payload.doc.id
+        const data = order.payload.doc.data() as IOrder
+        this.orderList.push({id, ...data})
+      })
     })
   }
+
 
   selectDelivery(eventItem:string) {
     this.delivery = eventItem
@@ -40,18 +53,25 @@ export class OrdersComponent implements OnInit {
   saveOrderEdit() {
     this.order.delivery = this.delivery
     this.order.status = this.orderStatus
-    this.orderService.updateOrder(this.order).subscribe(()=>{
-      console.log("update order")
-    })
+    // this.orderService.updateOrder(this.order).subscribe(()=>{
+    //   console.log("update order")
+    // })
+    this.orderService.updateFBOrder(this.order)
     this.modalRef.hide()
   }
 
   hideOrder() {
     this.order.hidden = true
-    this.orderService.updateOrder(this.order).subscribe(()=>{
-      console.log("update order")
-    })
+    // this.orderService.updateOrder(this.order).subscribe(()=>{
+    //   console.log("update order")
+    // })
+    this.orderService.updateFBOrder(this.order)
     this.modalRef.hide()
+  }
+
+  sortBy(param) {
+    this.orderBy = param
+    this.orderByReverse = !this.orderByReverse
   }
 
   openModal(template: TemplateRef<any>, order:IOrder) {

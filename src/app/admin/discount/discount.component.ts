@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiscountService } from 'src/shared/services/discount.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { from, Observable } from 'rxjs';
+import { from, Observable, ObjectUnsubscribedError } from 'rxjs';
 import { IDiscount } from 'src/shared/interfaces/discount.interface';
 import { Discount } from 'src/shared/models/discount.model';
 
@@ -20,7 +20,7 @@ export class DiscountComponent implements OnInit {
   dImage: string
   imageStatus: boolean
   uploadProgress: Observable<Number>
-  discountBox:IDiscount
+  discountBox: IDiscount
   down = true
   up = false
   sortId = true
@@ -39,8 +39,15 @@ export class DiscountComponent implements OnInit {
   }
 
   loadDiscounts() {
-    this.discountService.getDiscountsList().subscribe(data => {
-      this.discountList = data
+    // this.discountService.getDiscountsList().subscribe(data => {
+    //   this.discountList = data
+    // })
+    this.discountService.getFireCloudDiscounts().subscribe(collection => {
+      this.discountList = collection.map(discount => {
+        const data = discount.payload.doc.data() as IDiscount
+        const id = discount.payload.doc.id
+        return { id, ...data }
+      })
     })
   }
 
@@ -70,40 +77,52 @@ export class DiscountComponent implements OnInit {
   addDiscount() {
     const discount = new Discount(1, this.dTitle, this.dText, this.dImage)
     delete (discount.id)
-    this.discountService.addDiscount(discount).subscribe(() => {
-      this.loadDiscounts()
+    // this.discountService.addDiscount(discount).subscribe(() => {
+    //   this.loadDiscounts()
+    //   this.modalRef.hide()
+    // })
+    this.discountService.postFireCloudDiscount(Object.assign({}, discount)).then(message => {
+      console.log(message)
       this.modalRef.hide()
+      this.loadDiscounts()
     })
+      .catch(err => console.log(err))
   }
 
   updateDiscount(discount: IDiscount) {
     discount.title = this.dTitle
     discount.text = this.dText
     discount.image = this.dImage
-    this.discountService.updateDiscount(discount).subscribe(()=>{
-      this.loadDiscounts()
-      this.modalRef.hide()
-    })
+    // this.discountService.updateDiscount(discount).subscribe(() => {
+    //   this.loadDiscounts()
+    //   this.modalRef.hide()
+    // })
+    this.discountService.updateFireCloudDiscount(discount)
+    this.loadDiscounts()
+    this.modalRef.hide()
   }
 
   deleteDisc(discount: IDiscount) {
-      this.discountService.deleleDiscount(discount.id).subscribe(() => {
-        this.loadDiscounts()
-        this.modalRef.hide()
-      })
+    // this.discountService.deleleDiscount(discount.id).subscribe(() => {
+    //   this.loadDiscounts()
+    //   this.modalRef.hide()
+    // })
+    this.discountService.deleteFireCloudDiscount(discount)
   }
 
-  openModal(template, discount?:IDiscount) {
+  openModal(template, discount?: IDiscount) {
     this.modalRef = this.modalService.show(template)
-    this.discountBox = discount
-    this.dTitle = discount.title
-    this.dText = discount.text
-    this.dImage = discount.image
-    this.imageStatus = true
+    if (discount) {
+      this.discountBox = discount
+      this.dTitle = discount.title
+      this.dText = discount.text
+      this.dImage = discount.image
+      this.imageStatus = true
+    }
   }
 
-  sort(val:string) {
-    switch(val) {
+  sort(val: string) {
+    switch (val) {
       case 'id':
         this.sortId === true ? this.up = !this.up : this.sortId = true
         this.sortTitle = this.sortText = false
@@ -120,4 +139,5 @@ export class DiscountComponent implements OnInit {
     this.sortColumn = 'id'
     this.up ? this.sortDirection = 'desc' : this.sortDirection = 'asc'
   }
+
 }

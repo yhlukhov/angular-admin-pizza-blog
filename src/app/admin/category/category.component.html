@@ -1,7 +1,7 @@
 <form>
   <div class="card-header d-flex justify-content-between align-items-center">
     <span>Category</span>
-    <button class="btn btn-dark w-25" (click)="openModal(addTemplate)">Add</button>
+    <button class="btn btn-dark w-25" (click)="openAddModal(addEditTemplate)">Add</button>
   </div>
   <div class="m-3">
     <input class="form-control" type="text" [(ngModel)]="filterStr" name="filterStr" placeholder="filter category">
@@ -16,6 +16,7 @@
           <th scope="col" class="tHeader" (click)="sort('ua')">NameUA<i class="ml-1"
                [ngClass]="{'arrow-down': sortNameUaDown, 'arrow-up': sortNameUaUp}"></i></th>
           <th scope="col">Delete</th>
+          <th scope="col">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -34,15 +35,19 @@
                     cancelButtonType="outline-secondary">
               Delete
             </button></td>
+          <td>
+            <button class="btn btn-warning" (click)="openEditModal(addEditTemplate, category)">Edit</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </form>
 
-<ng-template #addTemplate>
+<ng-template #addEditTemplate>
   <div class="modal-header">
-    <h4 class="modal-title pull-left">Add category:</h4>
+    <h4 *ngIf="!editMode" class="modal-title pull-left">Add category:</h4>
+    <h4 *ngIf="editMode" class="modal-title pull-left">Edit category:</h4>
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -54,6 +59,7 @@
     <label>Category name UA:</label>
     <input type="text" class="form-control" [(ngModel)]="nameUA">
     <button class="btn btn-dark mt-2" (click)="modalRef.hide()">Close</button>
-    <button class="btn btn-success ml-2 mt-2" (click)="addCategory()">Add</button>
+    <button *ngIf="!editMode" class="btn btn-success ml-2 mt-2" (click)="addCategory()">Add</button>
+    <button *ngIf="editMode" class="btn btn-warning ml-2 mt-2" (click)="editCategory()">Edit</button>
   </div>
 </ng-template>

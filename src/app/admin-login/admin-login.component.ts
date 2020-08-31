@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { from } from 'rxjs';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-admin-login',
@@ -7,27 +9,21 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent implements OnInit {
-
   
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required])
   })
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
-    // this.loginIn()
   }
 
-  // loginIn() {
-  //   this.loginForm = new FormGroup({
-  //     email: new FormControl('', [Validators.required, Validators.email]),
-  //     password: new FormControl('', [Validators.required])
-  //   })
-  // }
-
   adminLogin() {
-    console.log(this.loginForm.value)
+    const {email, password} = this.loginForm.value
+    this.authService.signIn(email, password)
   }
 }

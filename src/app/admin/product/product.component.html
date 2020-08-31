@@ -22,7 +22,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let prod of productList; let i=index">
+          <tr *ngFor="let prod of productList | filterProduct:filterStr; let i=index">
             <td>{{ prod.id }}</td>
             <td>{{ prod.category.nameEN }}</td>
             <td>{{ prod.nameEN }}</td>

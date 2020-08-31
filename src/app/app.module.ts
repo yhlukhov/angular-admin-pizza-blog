@@ -11,7 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment.prod';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +40,11 @@ import { ProductCountComponent } from './components/product-count/product-count.
 import { OrdersComponent } from './admin/orders/orders.component';
 import { ChooseDeliveryComponent } from './components/choose-delivery/choose-delivery.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
+
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
+import { loaderConfig } from './preloading-config';
+import { FilterProductPipe } from './admin/product/filter-product.pipe'
 
 
 @NgModule({
@@ -65,6 +70,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     OrdersComponent,
     ChooseDeliveryComponent,
     AdminLoginComponent,
+    ProfileComponent,
+    FilterProductPipe,
   ],
   imports: [
     BrowserModule,
@@ -88,6 +95,9 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     NgpSortModule,
     ButtonsModule.forRoot(),
     OrderModule,
+    NgxUiLoaderModule.forRoot(loaderConfig),
+    NgxUiLoaderRouterModule,
+    NgxUiLoaderHttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

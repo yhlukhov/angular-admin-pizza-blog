@@ -29,11 +29,6 @@
       "id": 2
     },
     {
-      "nameEN": "meat",
-      "nameUA": "мясо",
-      "id": 3
-    },
-    {
       "nameEN": "drinks",
       "nameUA": "напої",
       "id": 4
@@ -46,29 +41,14 @@
         "nameUA": "піцца",
         "id": 1
       },
-      "nameEN": "ppp",
-      "nameUA": "pppp",
-      "description": "ppppp",
-      "weight": "5",
-      "price": 70,
-      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=8f1832fb-af56-4076-943f-7bf66e92869c",
+      "nameEN": "la piez",
+      "nameUA": "Піца La П’єц",
+      "description": "соус томатний, шинка, баварські ковбаски, сир моцарела, ковбаса салямі, прошуто.",
+      "weight": "480",
+      "price": 85,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-p_yets-1.png?alt=media&token=4d96b598-dfcc-49db-96a8-33bd47807b25",
       "count": 1,
       "id": 1
-    },
-    {
-      "category": {
-        "nameEN": "meat",
-        "nameUA": "мясо",
-        "id": 3
-      },
-      "nameEN": "s",
-      "nameUA": "ss",
-      "description": "sss",
-      "weight": "4",
-      "price": 45,
-      "count": 1,
-      "id": 2,
-      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fchopped-salad.jpeg?alt=media&token=d928f991-7e58-4e07-b684-691239f26c95"
     },
     {
       "category": {
@@ -76,12 +56,12 @@
         "nameUA": "салати",
         "id": 2
       },
-      "nameEN": "s",
-      "nameUA": "s",
-      "description": "s",
-      "weight": "4",
-      "price": 40,
-      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-piez.jpeg?alt=media&token=d47c5aa0-8d1b-442b-8e00-798dca0ef3b8",
+      "nameEN": "primavera",
+      "nameUA": "Прімавера",
+      "description": "сир моцарела, салат айсберг, помідор чері, огірок, болгарський перець, оливкова олія, фреш лимонний, орегано.",
+      "weight": "400",
+      "price": 60,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fprimavera-big-1.jpeg?alt=media&token=e05d6054-e7cd-4024-aad1-3eb4d923fd9c",
       "count": 1,
       "id": 3
     },
@@ -91,12 +71,12 @@
         "nameUA": "напої",
         "id": 4
       },
-      "nameEN": "d",
-      "nameUA": "d",
-      "description": "d",
-      "weight": "5",
-      "price": 43,
-      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fchopped-salad.jpeg?alt=media&token=e8b61975-bf77-4f7f-8be3-86b3271aa16c",
+      "nameEN": "coca cola",
+      "nameUA": "Кока Кола",
+      "description": "Кока Кола напій",
+      "weight": "500",
+      "price": 24,
+      "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fcola0.5.jpeg?alt=media&token=4ea7cc64-5bec-4406-a554-12f4ddf9247a",
       "count": 1,
       "id": 8
     }
@@ -280,7 +260,7 @@
       "status": "in progress",
       "userComment": "",
       "id": 5,
-      "delivery": "home"
+      "delivery": "driveway"
     },
     {
       "userName": "Юра",
@@ -323,9 +303,101 @@
       "totalPayment": 203,
       "delivery": "driveway",
       "dateOrder": "2020-08-24T13:31:53.591Z",
-      "status": "in progress",
+      "status": "delivered",
       "userComment": "",
       "id": 6
+    },
+    {
+      "userName": "Тарас",
+      "userPhone": "838485485",
+      "userCity": "Львів",
+      "userStreet": "Любінська",
+      "userHouse": "38",
+      "ordersDetails": [
+        {
+          "category": {
+            "nameEN": "drinks",
+            "nameUA": "напої",
+            "id": 4
+          },
+          "nameEN": "coca cola",
+          "nameUA": "Кока Кола",
+          "description": "Кока Кола напій",
+          "weight": "500",
+          "price": 24,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fcola0.5.jpeg?alt=media&token=4ea7cc64-5bec-4406-a554-12f4ddf9247a",
+          "count": 2,
+          "id": 8
+        },
+        {
+          "category": {
+            "nameEN": "salad",
+            "nameUA": "салати",
+            "id": 2
+          },
+          "nameEN": "primavera",
+          "nameUA": "Прімавера",
+          "description": "сир моцарела, салат айсберг, помідор чері, огірок, болгарський перець, оливкова олія, фреш лимонний, орегано.",
+          "weight": "400",
+          "price": 60,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fprimavera-big-1.jpeg?alt=media&token=e05d6054-e7cd-4024-aad1-3eb4d923fd9c",
+          "count": 1,
+          "id": 3
+        },
+        {
+          "category": {
+            "nameEN": "pizza",
+            "nameUA": "піцца",
+            "id": 1
+          },
+          "nameEN": "la piez",
+          "nameUA": "Піца La П’єц",
+          "description": "соус томатний, шинка, баварські ковбаски, сир моцарела, ковбаса салямі, прошуто.",
+          "weight": "480",
+          "price": 85,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fla-p_yets-1.png?alt=media&token=4d96b598-dfcc-49db-96a8-33bd47807b25",
+          "count": 1,
+          "id": 1
+        }
+      ],
+      "totalPayment": 193,
+      "delivery": "advance",
+      "dateOrder": "2020-08-26T11:39:19.041Z",
+      "status": "in progress",
+      "userComment": "",
+      "hidden": false,
+      "id": 7
+    },
+    {
+      "userName": "iurii",
+      "userPhone": "89887897",
+      "userCity": "lviv",
+      "userStreet": "str",
+      "userHouse": "28",
+      "ordersDetails": [
+        {
+          "category": {
+            "nameEN": "salad",
+            "nameUA": "салати",
+            "id": 2
+          },
+          "nameEN": "primavera",
+          "nameUA": "Прімавера",
+          "description": "сир моцарела, салат айсберг, помідор чері, огірок, болгарський перець, оливкова олія, фреш лимонний, орегано.",
+          "weight": "400",
+          "price": 60,
+          "image": "https://firebasestorage.googleapis.com/v0/b/pizza-15fdc.appspot.com/o/images%2Fprimavera-big-1.jpeg?alt=media&token=e05d6054-e7cd-4024-aad1-3eb4d923fd9c",
+          "count": 2,
+          "id": 3
+        }
+      ],
+      "totalPayment": 120,
+      "delivery": "home",
+      "dateOrder": "2020-08-26T19:34:11.849Z",
+      "status": "in progress",
+      "userComment": "",
+      "hidden": false,
+      "id": 8
     }
   ]
 }

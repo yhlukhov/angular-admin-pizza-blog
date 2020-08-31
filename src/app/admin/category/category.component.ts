@@ -4,6 +4,7 @@ import { Category } from '../../../shared/models/category.model';
 import { CategoryService } from '../../../shared/services/category.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { from } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-category',
@@ -23,15 +24,22 @@ export class CategoryComponent implements OnInit {
   sortNameUaUp = false
   sortNameUaDown = false
   filterStr = ''
+  editMode = false
+  editCat: ICategory
   //popower
   popoverTitle = 'Delete category'
   popoverMessage = 'Are you sure you want to delete the category?'
   confirmText = 'Delete'
 
-  constructor(public categoryService: CategoryService, private modalService: BsModalService) { }
+  constructor(
+    public categoryService: CategoryService,
+    private modalService: BsModalService,
+    private firestore: AngularFirestore
+  ) { }
 
   ngOnInit(): void {
-    this.getCategoryList()
+    // this.getCategoryList()
+    this.getFBCategoryList()
   }
 
   getCategoryList() {
@@ -40,12 +48,25 @@ export class CategoryComponent implements OnInit {
     })
   }
 
+  getFBCategoryList() {
+    this.categoryService.getFireCloudCategories().subscribe(collection => {
+      this.categoryList = collection.map(category => {
+        const data = category.payload.doc.data() as ICategory
+        const id = category.payload.doc.id
+        return {id, ...data}
+      })
+    })
+  }
+
   addCategory() {
     if (this.nameEN && this.nameUA) {
       let cat = new Category(1, this.nameEN, this.nameUA)
       delete (cat.id)
-      this.categoryService.postCategory(cat).subscribe(() => {
-        this.getCategoryList()
+      // this.categoryService.postCategory(cat).subscribe(() => {
+      //   this.getCategoryList()
+      // })
+      this.categoryService.postFireCloudCategory(Object.assign({}, cat)).then(()=>{
+        console.log('category added')
       })
       this.clearInput()
     }
@@ -53,9 +74,16 @@ export class CategoryComponent implements OnInit {
   }
 
   deleteCategory(category) {
-      this.categoryService.deleteCategory(category).subscribe(() => {
-        this.getCategoryList()
-      })
+    // this.categoryService.deleteCategory(category).subscribe(() => {
+    //   this.getCategoryList()
+    // })
+    this.categoryService.deleteFireCloudCategory(category)
+  }
+
+  editCategory() {
+    this.editCat.nameEN = this.nameEN
+    this.editCat.nameUA = this.nameUA
+    this.categoryService.updateFireCloudCategory(this.editCat)
   }
 
   closeModal() {
@@ -69,8 +97,16 @@ export class CategoryComponent implements OnInit {
     this.categoryValidInput = true
   }
 
-  openModal(template: TemplateRef<any>) {
+  openAddModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+    this.editMode = false
+  }
+  openEditModal(template: TemplateRef<any>, category: ICategory) {
+    this.modalRef = this.modalService.show(template);
+    this.editCat = category
+    this.editMode = true
+    this.nameEN = category.nameEN
+    this.nameUA = category.nameUA
   }
 
   // SORT

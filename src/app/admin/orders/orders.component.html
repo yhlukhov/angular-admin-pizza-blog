@@ -1,25 +1,25 @@
 <table class="table">
   <thead>
     <tr>
-      <th>id</th>
-      <th>Ім"я</th>
-      <th>Телефон</th>
-      <th>Доставка</th>
-      <th>Дата замовлення</th>
-      <th>Статус</th>
-      <th>Загальна вартість</th>
+      <th class="tHeader" (click)="sortBy('id')">id<span *ngIf="orderBy === 'id'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
+      <th class="tHeader" (click)="sortBy('userName')">Ім"я<span *ngIf="orderBy === 'userName'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
+      <th class="tHeader" (click)="sortBy('userPhone')">Телефон<span *ngIf="orderBy === 'userPhone'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
+      <th class="tHeader" (click)="sortBy('delivery')">Доставка<span *ngIf="orderBy === 'delivery'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
+      <th class="tHeader" (click)="sortBy('dateOrder')">Дата замовлення<span *ngIf="orderBy === 'dateOrder'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
+      <th class="tHeader" (click)="sortBy('status')">Статус<span *ngIf="orderBy === 'status'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
+      <th class="tHeader" (click)="sortBy('totalPayment')">Загальна вартість<span *ngIf="orderBy === 'totalPayment'" class="ml-1" [ngClass]="{'arrow-down': !orderByReverse, 'arrow-up': orderByReverse}"></span></th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let order of orderList">
+    <tr *ngFor="let order of orderList | orderBy: orderBy: orderByReverse">
       <ng-container *ngIf="!order.hidden">
         <td>{{ order.id }}</td>
         <td>{{ order.userName }}</td>
         <td>{{ order.userPhone }}</td>
         <td>{{ deliveryUA[order.delivery] }}</td>
-        <td>{{ order.dateOrder | date}}</td>
+        <td>{{ order.dateOrder.toDate() | date}}</td>
         <td>{{ order.status }}</td>
         <td>{{ order.totalPayment }} грн</td>
         <td><button class="btn btn-warning" (click)="openModal(orderEdit, order)">Edit</button></td>

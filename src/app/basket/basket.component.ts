@@ -87,10 +87,14 @@ export class BasketComponent implements OnInit {
       form.controls.userComment.value
     );
     delete(newOrder.id)
-    this.orderService.addOrder(newOrder).subscribe(data => {
-      console.log(data)
-      this.resetBasket()
+    // this.orderService.addOrder(newOrder).subscribe(data => {
+    //   console.log(data)
+    //   this.resetBasket()
+    // })
+    this.orderService.addFBOrder(Object.assign({}, newOrder)).then(()=>{
+      console.log('added new order')
     })
+    .catch(err => {console.log(err)})
   }
 
   resetBasket() {
